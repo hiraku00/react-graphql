@@ -1,0 +1,20 @@
+version: "3"
+services:
+  front:
+    container_name: react
+    build: ./front
+    tty: true
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./front:/app
+    command: sh -c 'npm run dev'
+  back:
+    container_name: node
+    build: ./back
+    tty: true
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./back:/app
+    command: sh -c 'npm run dev'
